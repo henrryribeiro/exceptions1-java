@@ -1,0 +1,66 @@
+package model.entities;
+
+import javax.xml.crypto.Data;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
+public class Reservetion {
+    private Integer roomNumber;
+    private Date checkIn;
+    private Date checkOut;
+
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+    public Reservetion(Integer roomNumber, Date checkIn, Date checkOut) {
+        this.roomNumber = roomNumber;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+    }
+
+    public Integer getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(Integer roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public Date getCheckIn() {
+        return checkIn;
+    }
+
+
+    public Date getCheckOut() {
+        return checkOut;
+    }
+
+    //metodo para pegar diferença entre as datas em mili-segundos
+    public long duration() {
+        long diff = checkOut.getTime() - checkIn.getTime();
+        //converte para a duração em dias
+        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+
+
+    }
+
+    public void updateDates(Date checkIn, Date CheckOut) {
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Room "
+            + roomNumber
+            +", check-in"
+            + sdf.format(checkIn)
+            + ", check-out "
+            + sdf.format(checkOut)
+            + ", "
+            + duration()
+            + " nights ";
+
+    }
+}
