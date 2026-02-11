@@ -1,18 +1,17 @@
 package model.entities;
 
-import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class Reservetion {
+public class Reservation {
     private Integer roomNumber;
     private Date checkIn;
     private Date checkOut;
 
     private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-    public Reservetion(Integer roomNumber, Date checkIn, Date checkOut) {
+    public Reservation(Integer roomNumber, Date checkIn, Date checkOut) {
         this.roomNumber = roomNumber;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
@@ -44,7 +43,7 @@ public class Reservetion {
 
     }
 
-    public void updateDates(Date checkIn, Date CheckOut) {
+    public void updateDates(Date checkIn, Date checkOut) {
         this.checkIn = checkIn;
         this.checkOut = checkOut;
 
@@ -54,9 +53,9 @@ public class Reservetion {
     public String toString() {
         return "Room "
             + roomNumber
-            +", check-in"
+            +", check-in: "
             + sdf.format(checkIn)
-            + ", check-out "
+            + ", check-out: "
             + sdf.format(checkOut)
             + ", "
             + duration()
